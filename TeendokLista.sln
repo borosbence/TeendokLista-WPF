@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeendokLista.WPF", "Teendok
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeendokLista.Data", "TeendokLista.DAL\TeendokLista.Data.csproj", "{AFC0B95C-0F50-4121-9F6A-616953BF7399}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeendokLista.API", "TeendokLista.API\TeendokLista.API.csproj", "{39652734-3C0F-4846-AC0D-E16A16906A58}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{AFC0B95C-0F50-4121-9F6A-616953BF7399}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AFC0B95C-0F50-4121-9F6A-616953BF7399}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AFC0B95C-0F50-4121-9F6A-616953BF7399}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39652734-3C0F-4846-AC0D-E16A16906A58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39652734-3C0F-4846-AC0D-E16A16906A58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39652734-3C0F-4846-AC0D-E16A16906A58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39652734-3C0F-4846-AC0D-E16A16906A58}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

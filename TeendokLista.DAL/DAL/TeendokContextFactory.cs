@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -15,10 +16,13 @@ namespace TeendokLista.Data.DAL
         public TeendokContext CreateDbContext(string[] args = null)
         {
             IConfigurationRoot configuration = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json").Build();
+                // using Microsoft.Extensions.Configuration.FileExtensions
+                // using Microsoft.Extensions.Configuration.Json
+                //.SetBasePath(Directory.GetCurrentDirectory()).
+                //.AddJsonFile("appsettings.json")
+                .Build();
             var builder = new DbContextOptionsBuilder<TeendokContext>();
-            var connectionString = configuration.GetConnectionString("DatabaseConnection");
+            var connectionString = ConfigurationManager.ConnectionStrings["TeendokDB"].ConnectionString;
             builder.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
                 .EnableSensitiveDataLogging()
                 .EnableDetailedErrors();
