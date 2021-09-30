@@ -10,17 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace TeendokLista
+namespace TeendokLista.WPF.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for DetailWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class DetailWindow : Window
     {
-        public MainWindow()
+        public DetailWindow()
         {
             InitializeComponent();
         }
