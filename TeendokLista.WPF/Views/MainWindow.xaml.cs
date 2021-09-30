@@ -22,7 +22,7 @@ namespace TeendokLista.WPF.Views
         public MainWindow()
         {
             InitializeComponent();
-            var repo = new TeendokLista.DAL.Repositories.FeladatRepository();
+            var repo = new TeendokLista.Data.Repositories.FeladatRepository();
             var db = repo.GetAll().Count;
             MessageBox.Show(db.ToString());
         }

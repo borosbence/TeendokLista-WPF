@@ -1,0 +1,3 @@
+drop-database -force -startupproject TeendokLista.Data
+add-migration init -startupproject TeendokLista.Data
+update-database -startupproject TeendokLista.Data

@@ -4,13 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TeendokLista.DAL.Models;
+using TeendokLista.Data.DAL;
+using TeendokLista.Data.Models;
 
-namespace TeendokLista.DAL.Repositories
+namespace TeendokLista.Data.Repositories
 {
     public class FeladatRepository
     {
-        private TeendokContext db = new TeendokContext();
+        private TeendokContext db = new TeendokContextFactory().CreateDbContext();
 
         public List<Feladat> GetAll()
         {
@@ -44,7 +45,7 @@ namespace TeendokLista.DAL.Repositories
             // TODO: A jelenlegi felhasználó id-jának lekérdezése
 
             // Megkeressük a db-ben
-            var letezik = db.Feladatok.AsNoTracking().Any(x => x.id == feladat.id);
+            var letezik = db.Feladatok.AsNoTracking().Any(x => x.Id == feladat.Id);
 
             // Ha már létezik
             if (letezik)

@@ -2,27 +2,28 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace TeendokLista.DAL.Models
+namespace TeendokLista.Data.Models
 {
-    [Table("feladat")]
+    [Table("Feladatok")]
     public partial class Feladat
     {
-        // [Key, Column("Id")]
-        public int id { get; set; }
+        //[Key, Column("Id")]
+        public int Id { get; set; }
         [Required]
         [StringLength(50)]
-        public string cim { get; set; }
+        public string Cim { get; set; }
         [Required]
+        [Column(TypeName = "text")]
         [DataType(DataType.MultilineText)]
-        public string szoveg { get; set; }
+        public string Szoveg { get; set; }
         [Required]
         [DataType(DataType.DateTime)]
-        public DateTime letrehozas_datum { get; set; }
-        public bool teljesitve { get; set; }
+        public DateTime LetrehozasDatum { get; set; }
+        public bool Teljesitve { get; set; }
 
         //[ForeignKey("Felhasznalo")]
         //public int FelhasznaloId { get; set; }
 
-        //public Felhasznalo Felhasznalo { get; set; }
+        public Felhasznalo Felhasznalo { get; set; }
     }
 }

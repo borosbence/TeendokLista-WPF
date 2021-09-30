@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31624.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeendokLista.WPF", "TeendokLista.WPF\TeendokLista.WPF.csproj", "{A60BE177-9147-4957-9326-959D5362DC16}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeendokLista.DAL", "TeendokLista.DAL\TeendokLista.DAL.csproj", "{AFC0B95C-0F50-4121-9F6A-616953BF7399}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeendokLista.Data", "TeendokLista.DAL\TeendokLista.Data.csproj", "{AFC0B95C-0F50-4121-9F6A-616953BF7399}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

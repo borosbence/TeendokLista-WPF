@@ -5,7 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
-using TeendokLista.DAL.Models;
+using TeendokLista.Data.Models;
 using TeendokLista.WPF.Views;
 
 namespace TeendokLista.WPF
