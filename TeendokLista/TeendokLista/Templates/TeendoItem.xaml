@@ -1,0 +1,35 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" >
+               <!-- xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+                    xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"-->
+    <DataTemplate x:Key="DataTemplate1">
+        <StackPanel Orientation="Vertical" Cursor="Hand">
+            <Image Height="148" Width="148" Margin="10" Source="{Binding FullName}">
+                <Image.InputBindings>
+                    <MouseBinding Gesture="LeftDoubleClick" 
+                                  Command="{Binding DataContext.New, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}}"
+                                  CommandParameter="{Binding FullName}"/>
+                </Image.InputBindings>
+                <Image.Effect>
+                    <DropShadowEffect BlurRadius="5" ShadowDepth="6" Opacity="0.75" />
+                </Image.Effect>
+            </Image>
+            <TextBlock Text="{Binding FullName}">
+            </TextBlock>
+        </StackPanel>
+    </DataTemplate>
+    <ItemsPanelTemplate x:Key="ItemsPanelTemplate1">
+        <WrapPanel>
+            <!--<i:Interaction.Behaviors>
+                <ei:FluidMoveBehavior AppliesTo="Children" Duration="0:0:2">
+                    <ei:FluidMoveBehavior.EaseY>
+                        <ExponentialEase EasingMode="EaseInOut" />
+                    </ei:FluidMoveBehavior.EaseY>
+                    <ei:FluidMoveBehavior.EaseX>
+                        <ExponentialEase EasingMode="EaseInOut" />
+                    </ei:FluidMoveBehavior.EaseX>
+                </ei:FluidMoveBehavior>
+            </i:Interaction.Behaviors>-->
+        </WrapPanel>
+    </ItemsPanelTemplate>
+</ResourceDictionary>

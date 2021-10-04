@@ -1,0 +1,33 @@
+﻿<Window x:Class="TeendokLista.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TeendokLista.ViewModels"
+        mc:Ignorable="d"
+        Title="TeendőkLista" Height="450" Width="800">
+    <DockPanel>
+        <Menu Height="30" VerticalAlignment="Top" IsMainMenu="True" DockPanel.Dock="Top">
+            <MenuItem>
+                <MenuItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/img/NewFile_16x.png" Height="16" />
+                        <Label>Új</Label>
+                    </StackPanel>
+                </MenuItem.Header>
+            </MenuItem>
+            <MenuItem>
+                <MenuItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/img/Trash_16x.png" Height="16"/>
+                        <Label>Törlés</Label>
+                    </StackPanel>
+                </MenuItem.Header>
+            </MenuItem>
+        </Menu>
+        <ListBox x:Name="listBox"
+                 ItemTemplate="{DynamicResource DataTemplate1}"
+                 ItemsPanel="{DynamicResource ItemsPanelTemplate1}"
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
+    </DockPanel>
+</Window>
