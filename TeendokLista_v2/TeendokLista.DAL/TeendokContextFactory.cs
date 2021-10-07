@@ -15,18 +15,16 @@ namespace TeendokLista.DAL
     {
         public TeendokContext CreateDbContext(string[] args = null)
         {
-            IConfigurationRoot configuration = new ConfigurationBuilder()
-                // using Microsoft.Extensions.Configuration.FileExtensions
-                // using Microsoft.Extensions.Configuration.Json
-                //.SetBasePath(Directory.GetCurrentDirectory()).
-                //.AddJsonFile("appsettings.json")
+            var configuration = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json")
                 .Build();
-            var builder = new DbContextOptionsBuilder<TeendokContext>();
-            var connectionString = ConfigurationManager.ConnectionStrings["TeendokDB"].ConnectionString;
-            builder.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
+            string connectionString = configuration.GetConnectionString("TeendokDB");
+            var optionsBuilder = new DbContextOptionsBuilder<TeendokContext>();
+            optionsBuilder.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
                 .EnableSensitiveDataLogging()
                 .EnableDetailedErrors();
-            return new TeendokContext(builder.Options);
+            return new TeendokContext(optionsBuilder.Options);
         }
     }
 }

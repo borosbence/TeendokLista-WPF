@@ -13,7 +13,6 @@ namespace TeendokLista.Models
         {
             Feladatok = new HashSet<Feladat>();
         }
-
         public int Id { get; set; }
         [Required]
         [StringLength(50)]

@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeendokLista.DAL", "Teendok
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeendokLista.API", "TeendokLista.API\TeendokLista.API.csproj", "{39652734-3C0F-4846-AC0D-E16A16906A58}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeendokLista.Model", "TeendokLista.Model\TeendokLista.Model.csproj", "{56D17086-A6F7-43B1-8576-1EB3A09B44A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TeendokLista.Model", "TeendokLista.Model\TeendokLista.Model.csproj", "{56D17086-A6F7-43B1-8576-1EB3A09B44A4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

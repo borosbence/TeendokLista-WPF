@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TeendokLista.WPF.ViewModels;
 
 namespace TeendokLista.WPF.Views
 {
@@ -19,12 +20,13 @@ namespace TeendokLista.WPF.Views
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        public MainWindow(MainViewModel mainViewModel)
         {
             InitializeComponent();
-            var repo = new TeendokLista.Data.Repositories.FeladatRepository();
-            var db = repo.GetAll().Count;
-            MessageBox.Show(db.ToString());
+            DataContext = mainViewModel;
+            //DirectoryInfo dir = new DirectoryInfo(@"D:\Képek\Hacker");
+            //FileInfo[] files = dir.GetFiles();
+            //listBox.ItemsSource = files;
         }
     }
 }

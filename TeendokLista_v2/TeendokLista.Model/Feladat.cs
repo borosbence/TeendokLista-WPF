@@ -21,8 +21,8 @@ namespace TeendokLista.Models
         public DateTime LetrehozasDatum { get; set; }
         public bool Teljesitve { get; set; }
 
-        //[ForeignKey("Felhasznalo")]
-        //public int FelhasznaloId { get; set; }
+        [ForeignKey("Felhasznalo")]
+        public int FelhasznaloId { get; set; }
 
         public Felhasznalo Felhasznalo { get; set; }
     }

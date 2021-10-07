@@ -1,3 +1,1 @@
-drop-database -startupproject TeendokLista.DAL
-add-migration init -startupproject TeendokLista.DAL
-update-database -startupproject TeendokLista.DAL
+add-migration init -Project TeendokLista.DAL

@@ -7,10 +7,6 @@ namespace TeendokLista.DAL
 {
     public class TeendokContext : DbContext
     {
-        //public TeendokContext() : base()
-        //{
-
-        //}
         public TeendokContext(DbContextOptions options) : base(options)
         {
         }
@@ -24,14 +20,5 @@ namespace TeendokLista.DAL
                 .HasIndex(user => user.Felhasznalonev)
                 .IsUnique(true);
         }
-
-
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //{
-        //    optionsBuilder
-        //        .UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
-        //        .EnableSensitiveDataLogging()
-        //        .EnableDetailedErrors();
-        //}
     }
 }

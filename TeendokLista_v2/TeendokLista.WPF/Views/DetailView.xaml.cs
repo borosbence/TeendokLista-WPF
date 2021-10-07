@@ -11,17 +11,19 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TeendokLista.WPF.ViewModels;
 
 namespace TeendokLista.WPF.Views
 {
     /// <summary>
-    /// Interaction logic for DetailWindow.xaml
+    /// Interaction logic for DetailView.xaml
     /// </summary>
-    public partial class DetailWindow : Window
+    public partial class DetailView : Window
     {
-        public DetailWindow()
+        public DetailView(DetailViewModel detailViewModel)
         {
             InitializeComponent();
+            DataContext = detailViewModel;
         }
     }
 }
