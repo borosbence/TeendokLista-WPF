@@ -1,0 +1,45 @@
+﻿<Window x:Class="TeendokLista.Views.DetailView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TeendokLista.Views"
+        xmlns:vm="clr-namespace:TeendokLista.ViewModels"
+        mc:Ignorable="d"
+        Title="Jegyzet" Height="400" Width="400"
+        ShowInTaskbar="False" WindowStyle="ToolWindow">
+    <Window.DataContext>
+        <vm:DetailViewModel/>
+    </Window.DataContext>
+    <Grid ShowGridLines="False">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Grid.Column="0">Azonosító:</Label>
+        <TextBlock Text="{Binding Feladat.Id, Mode=OneWay}" VerticalAlignment="Center"
+                   Grid.Row="0" Grid.Column="1"/>
+        <Label Grid.Row="1" Grid.Column="0">Cím:</Label>
+        <TextBox Text="{Binding Feladat.Cim}" Grid.Row="1" Grid.Column="1"/>
+        <Label Grid.Row="2" Grid.Column="0">Szöveg:</Label>
+        <TextBox Text="{Binding Feladat.Szoveg}" Grid.Row="2" Grid.Column="1"/>
+        <Label Grid.Row="3" Grid.Column="0">Határidő:</Label>
+        <Calendar SelectedDate="{Binding Feladat.LetrehozasDatum}" HorizontalAlignment="Left"
+                  Grid.Row="3" Grid.Column="1"/>
+        <Label Grid.Row="4" Grid.Column="0">Teljesítve:</Label>
+        <CheckBox IsChecked="{Binding Feladat.Teljesitve}" VerticalAlignment="Center"
+                  Grid.Row="4" Grid.Column="1"/>
+        <Button Margin="10"  HorizontalAlignment="Left" Command="{Binding SaveCommand}"
+                Grid.Row="5" Grid.Column="1">Mentés</Button>
+        <Button Margin="10" HorizontalAlignment="Right"
+                Grid.Row="5" Grid.Column="1" IsCancel="True">Mégse</Button>
+    </Grid>
+</Window>

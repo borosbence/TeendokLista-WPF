@@ -5,11 +5,11 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TeendokLista.Data.Repositories;
 using TeendokLista.Models;
-using TeendokLista.WPF.Views;
+using TeendokLista.Repositories;
+using TeendokLista.Views;
 
-namespace TeendokLista.WPF.ViewModels
+namespace TeendokLista.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
