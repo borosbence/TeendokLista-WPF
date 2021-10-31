@@ -51,7 +51,7 @@ namespace TeendokLista.ViewModels
 
         public void ShowDetail(object parameter)
         {
-            DetailViewModel detailViewModel = new DetailViewModel(parameter as Feladat);
+            DetailViewModel detailViewModel = new DetailViewModel(parameter as Feladat, _repo);
             DetailView detail = new DetailView(detailViewModel);
             // Itt már érzékeli az ObservableCollection a változást
             detail.ShowDialog();

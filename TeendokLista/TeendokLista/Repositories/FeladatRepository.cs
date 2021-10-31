@@ -18,7 +18,7 @@ namespace TeendokLista.Repositories
 
         public List<Feladat> GetAll()
         {
-            return db.Feladatok.ToList();
+            return db.Feladatok.OrderByDescending(x => x.Hatarido).ToList();
         }
 
         public Feladat GetById(int id)
@@ -26,12 +26,12 @@ namespace TeendokLista.Repositories
             return db.Feladatok.Find(id);
         }
 
-        public void Create(Feladat feladat)
-        {
-            // TODO: dátum beállítása
-            db.Feladatok.Add(feladat);
-            db.SaveChanges();
-        }
+        //public void Create(Feladat feladat)
+        //{
+        //    // TODO: dátum beállítása
+        //    db.Feladatok.Add(feladat);
+        //    db.SaveChanges();
+        //}
 
         public void Delete(int id)
         {

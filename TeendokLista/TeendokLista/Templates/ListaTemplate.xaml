@@ -33,8 +33,13 @@
                     </Style>
                 </Rectangle.Style>
             </Rectangle>
-            <TextBlock Text="{Binding Cim}" Width="140" Height="140" TextWrapping="Wrap"
+            <StackPanel Orientation="Vertical" Width="140" Height="140">
+                <TextBlock Text="{Binding Cim}" TextWrapping="Wrap"
                        FontSize="16" FontStyle="Italic" FontWeight="Bold" />
+                <TextBlock Text="{Binding Szoveg}" TextWrapping="Wrap" Margin="0,5,0,0"
+                           FontStyle="Italic" />
+            </StackPanel>
+
             <!--
             <StackPanel Orientation="Vertical" Cursor="Hand">
                 <Image Height="148" Width="148" Margin="10" Source="{Binding FullName}">

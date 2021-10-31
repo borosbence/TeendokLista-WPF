@@ -7,39 +7,44 @@
         xmlns:vm="clr-namespace:TeendokLista.ViewModels"
         mc:Ignorable="d"
         Title="Jegyzet" Height="400" Width="400"
-        ShowInTaskbar="False" WindowStyle="ToolWindow">
+        ShowInTaskbar="False" WindowStyle="ToolWindow" Topmost="True">
     <Window.DataContext>
         <vm:DetailViewModel/>
     </Window.DataContext>
-    <Grid ShowGridLines="False">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
-        <Label Grid.Row="0" Grid.Column="0">Azonosító:</Label>
-        <TextBlock Text="{Binding Feladat.Id, Mode=OneWay}" VerticalAlignment="Center"
-                   Grid.Row="0" Grid.Column="1"/>
-        <Label Grid.Row="1" Grid.Column="0">Cím:</Label>
-        <TextBox Text="{Binding Feladat.Cim}" Grid.Row="1" Grid.Column="1"/>
-        <Label Grid.Row="2" Grid.Column="0">Szöveg:</Label>
-        <TextBox Text="{Binding Feladat.Szoveg}" Grid.Row="2" Grid.Column="1"/>
-        <Label Grid.Row="3" Grid.Column="0">Határidő:</Label>
-        <Calendar SelectedDate="{Binding Feladat.LetrehozasDatum}" HorizontalAlignment="Left"
-                  Grid.Row="3" Grid.Column="1"/>
-        <Label Grid.Row="4" Grid.Column="0">Teljesítve:</Label>
-        <CheckBox IsChecked="{Binding Feladat.Teljesitve}" VerticalAlignment="Center"
-                  Grid.Row="4" Grid.Column="1"/>
-        <Button Margin="10"  HorizontalAlignment="Left" Command="{Binding SaveCommand}"
-                Grid.Row="5" Grid.Column="1">Mentés</Button>
-        <Button Margin="10" HorizontalAlignment="Right"
-                Grid.Row="5" Grid.Column="1" IsCancel="True">Mégse</Button>
-    </Grid>
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="Width" Value="75" />
+        </Style>
+        <Style x:Key="cimStyle" TargetType="TextBox">
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="FontStyle" Value="Italic" />
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
+        <Style x:Key="szovegStyle" TargetType="TextBox">
+            <Setter Property="FontSize" Value="14" />
+        </Style>
+    </Window.Resources>
+    <StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Label>Azonosító:</Label>
+            <TextBlock Text="{Binding Feladat.Id, Mode=OneWay}" VerticalAlignment="Center"/>
+        </StackPanel>
+        <TextBox Text="{Binding Feladat.Cim}" Style="{StaticResource cimStyle}"/>
+        <TextBox Text="{Binding Feladat.Szoveg}" Style="{StaticResource szovegStyle}" TextWrapping="Wrap"
+                 Margin="0,10,0,0" Height="200" VerticalScrollBarVisibility="Auto" />
+        <StackPanel Orientation="Horizontal">
+            <Label>Határidő:</Label>
+            <DatePicker SelectedDate="{Binding Feladat.Hatarido}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Label>Teljesítve:</Label>
+            <CheckBox IsChecked="{Binding Feladat.Teljesitve}" VerticalAlignment="Center"/>
+        </StackPanel>
+        <Grid Margin="0,20,0,0">
+            <Button HorizontalAlignment="Left" Command="{Binding SaveCommand}">Mentés</Button>
+            <Button HorizontalAlignment="Right" IsCancel="True">Mégse</Button>
+        </Grid>
+
+    </StackPanel>
 </Window>

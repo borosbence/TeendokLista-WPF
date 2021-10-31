@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using TeendokLista.Models;
+using TeendokLista.Repositories;
 
 namespace TeendokLista.ViewModels
 {
@@ -17,13 +18,15 @@ namespace TeendokLista.ViewModels
         {
 
         }
-        public DetailViewModel(Feladat feladat)
+        public DetailViewModel(Feladat feladat, FeladatRepository feladatRepository)
         {
             _feladat = feladat;
+            repo = feladatRepository;
             SaveCommand = new RelayCommand(e => Save());
         }
 
         public RelayCommand SaveCommand { set; get; }
+        FeladatRepository repo;
 
         private Feladat _feladat;
         public Feladat Feladat
@@ -34,7 +37,7 @@ namespace TeendokLista.ViewModels
 
         public void Save()
         {
-
+            repo.Save(_feladat);
         }
 
         public void OnClose()

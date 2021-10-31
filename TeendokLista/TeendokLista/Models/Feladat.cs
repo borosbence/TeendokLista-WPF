@@ -22,7 +22,7 @@ namespace TeendokLista.Models
         [Column(TypeName = "text")]
         public string Szoveg { get; set; }
         [MaxLength(6)]
-        public DateTime LetrehozasDatum { get; set; }
+        public DateTime Hatarido { get; set; }
         public bool Teljesitve { get; set; }
         [Column(TypeName = "int(11)")]
         public int FelhasznaloId { get; set; }
