@@ -33,7 +33,7 @@ CREATE TABLE `feladatok` (
   `Id` int(11) NOT NULL,
   `Cim` varchar(50) NOT NULL,
   `Szoveg` text NOT NULL,
-  `LetrehozasDatum` datetime(6) NOT NULL,
+  `Hatarido` datetime(6) NOT NULL,
   `Teljesitve` tinyint(1) NOT NULL,
   `FelhasznaloId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

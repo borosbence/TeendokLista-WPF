@@ -21,12 +21,13 @@ namespace TeendokLista.ViewModels
         public DetailViewModel(Feladat feladat, FeladatRepository feladatRepository)
         {
             _feladat = feladat;
-            repo = feladatRepository;
+            _repo = feladatRepository;
             SaveCommand = new RelayCommand(e => Save());
         }
 
-        public RelayCommand SaveCommand { set; get; }
-        FeladatRepository repo;
+        public RelayCommand SaveCommand { get; set; }
+        public RelayCommand CancelCommand { get; set; }
+        private FeladatRepository _repo;
 
         private Feladat _feladat;
         public Feladat Feladat
@@ -37,12 +38,7 @@ namespace TeendokLista.ViewModels
 
         public void Save()
         {
-            repo.Save(_feladat);
-        }
-
-        public void OnClose()
-        {
-
+            _repo.Save(_feladat);
         }
     }
 }

@@ -40,9 +40,9 @@ namespace TeendokLista.ViewModels
         {
 
         }
-        public MainViewModel(FeladatRepository repo)
+        public MainViewModel(FeladatRepository feladatRepository)
         {
-            _repo = repo;
+            _repo = feladatRepository;
             Feladatok = new ObservableCollection<Feladat>(_repo.GetAll());
             SelectCommand = new RelayCommand(e => ShowDetail(e));
             NewCommand = new RelayCommand(e => AddItem());
@@ -60,14 +60,14 @@ namespace TeendokLista.ViewModels
         public void RemoveItem(object parameter)
         {
             // TODO: több elem kijelölésénél is
-            Feladatok.Remove(SelectedFeladat);
             _repo.Delete(SelectedFeladat.Id);
+            Feladatok.Remove(SelectedFeladat);
         }
 
         public void AddItem()
         {
             var newItem = new Feladat();
-            Feladatok.Add(newItem);
+            Feladatok.Insert(0, newItem);
             ShowDetail(newItem);
         }
     }

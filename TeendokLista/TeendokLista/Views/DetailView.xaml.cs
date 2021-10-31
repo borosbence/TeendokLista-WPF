@@ -20,10 +20,12 @@ namespace TeendokLista.Views
     /// </summary>
     public partial class DetailView : Window
     {
+        private DetailViewModel _detailViewModel;
         public DetailView(DetailViewModel detailViewModel)
         {
             InitializeComponent();
             DataContext = detailViewModel;
+            _detailViewModel = detailViewModel;
         }
     }
 }

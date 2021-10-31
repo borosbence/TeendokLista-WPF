@@ -1,6 +1,29 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <DataTemplate x:Key="JegyzetTmpl">
-        
-    </DataTemplate>
+    <Style TargetType="Button">
+        <Setter Property="Width" Value="75" />
+    </Style>
+    <Style x:Key="cimStyle" TargetType="TextBox">
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="FontStyle" Value="Italic" />
+        <Setter Property="FontWeight" Value="Bold" />
+    </Style>
+    <Style x:Key="szovegStyle" TargetType="TextBox">
+        <Setter Property="FontSize" Value="14" />
+    </Style>
+    <LinearGradientBrush x:Key="teljesitveFalse">
+        <GradientStop Color="LightGoldenrodYellow" Offset="0" />
+        <GradientStop Color="Yellow" Offset="1" />
+    </LinearGradientBrush>
+    <SolidColorBrush Color="LightGray" x:Key="teljesitveTrue" />
+    <Style TargetType="Window" x:Key="dWindow">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding Feladat.Teljesitve}" Value="False">
+                <Setter Property="Background" Value="{DynamicResource teljesitveFalse}"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Feladat.Teljesitve}" Value="True">
+                <Setter Property="Background" Value="{DynamicResource teljesitveTrue}"/>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
 </ResourceDictionary>
