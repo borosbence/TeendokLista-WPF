@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using CryptoHelper;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,14 +23,11 @@ namespace TeendokLista.Repositories
             var dbUser = db.Felhasznalok.AsNoTracking().SingleOrDefault(x => x.Felhasznalonev.Equals(username));
             if (dbUser != null)
             {
-                // Só lekérése titkosításhoz
-                //var salt = dbUser.id;
                 // Begépelt jelszó titkosítása
-                //var password = Hash.Encrypt(view.Password + salt);
-
-                // Rekord keresése
-                var user = db.Felhasznalok.AsNoTracking().SingleOrDefault(x => x.Felhasznalonev.Equals(username) && x.Jelszo.Equals(password));
-                if (user != null)
+                var passwordHash = BCrypt.Net.BCrypt.HashPassword(password);
+                // Jelszó ellenőrzése
+                bool verified = BCrypt.Net.BCrypt.Verify(password, dbUser.Jelszo);
+                if (verified)
                 {
                     return true;
                     // CurrentUser.Id = user.id;
