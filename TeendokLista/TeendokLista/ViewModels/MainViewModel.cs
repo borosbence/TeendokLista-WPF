@@ -13,9 +13,9 @@ namespace TeendokLista.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
-        public RelayCommand SelectCommand { set; get; }
-        public RelayCommand NewCommand { set; get; }
-        public RelayCommand RemoveCommand { set; get; }
+        public RelayCommand SelectCommand { get; set; }
+        public RelayCommand NewCommand { get; set; }
+        public RelayCommand RemoveCommand { get; set; }
 
         private ObservableCollection<Feladat> _feladatok;
         public ObservableCollection<Feladat> Feladatok
@@ -46,7 +46,7 @@ namespace TeendokLista.ViewModels
             Feladatok = new ObservableCollection<Feladat>(_repo.GetAll());
             SelectCommand = new RelayCommand(e => ShowDetail(e));
             NewCommand = new RelayCommand(e => AddItem());
-            RemoveCommand = new RelayCommand(e=> RemoveItem(e));
+            RemoveCommand = new RelayCommand(e => RemoveItem(e));
         }
 
         public void ShowDetail(object parameter)

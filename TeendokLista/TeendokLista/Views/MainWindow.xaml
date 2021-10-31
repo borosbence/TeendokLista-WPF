@@ -30,8 +30,8 @@
             </MenuItem>
         </Menu>
         <ListView x:Name="listBox" ItemsSource="{Binding Feladatok}"
-                 ItemTemplate="{DynamicResource DataTemplate1}"
-                 ItemsPanel="{DynamicResource ItemsPanelTemplate1}"
+                 ItemTemplate="{DynamicResource ListaDTmpl}"
+                 ItemsPanel="{DynamicResource ListaItemsTmpl}"
                  SelectedItem="{Binding SelectedFeladat}"
                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
     </DockPanel>

@@ -22,7 +22,7 @@ namespace TeendokLista.ViewModels
             _feladat = feladat;
             SaveCommand = new RelayCommand(e => Save());
         }
-        
+
         public RelayCommand SaveCommand { set; get; }
 
         private Feladat _feladat;
@@ -33,6 +33,11 @@ namespace TeendokLista.ViewModels
         }
 
         public void Save()
+        {
+
+        }
+
+        public void OnClose()
         {
 
         }
