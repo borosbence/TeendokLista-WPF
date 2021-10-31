@@ -1,1 +1,1 @@
-add-migration init -Project TeendokLista.DAL
+Scaffold-DbContext "server=localhost;user id=root;database=teendoklista" Pomelo.EntityFrameworkCore.MySql -OutputDir Models -DataAnnotations -UseDatabaseNames -Force -NoPluralize
