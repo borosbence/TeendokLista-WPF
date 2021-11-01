@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using TeendokLista.Models;
+using TeendokLista.Services;
 
 namespace TeendokLista.Repositories
 {
@@ -25,12 +26,13 @@ namespace TeendokLista.Repositories
             if (dbUser != null && !string.IsNullOrWhiteSpace(username) && !string.IsNullOrWhiteSpace(password))
             {
                 // Begépelt jelszó titkosítása, ezt el kell menteni az adatbázisba!
-                // var passwordHash = BCrypt.Net.BCrypt.HashPassword(password);
+                var passwordHash = BCrypt.Net.BCrypt.HashPassword(password);
                 // Jelszó ellenőrzése
                 bool verified = BCrypt.Net.BCrypt.Verify(password, dbUser.Jelszo);
                 if (verified)
                 {
-                    // CurrentUser.Id = user.id;
+                    CurrentUser.Id = dbUser.Id;
+                    CurrentUser.UserName = dbUser.Felhasznalonev;
                     return Application.Current.Resources["loginSuccess"].ToString();
                 }
                 else

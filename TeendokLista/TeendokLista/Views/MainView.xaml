@@ -5,12 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TeendokLista.Views"
         xmlns:vm="clr-namespace:TeendokLista.ViewModels"
+        xmlns:s="clr-namespace:TeendokLista.Services"
         mc:Ignorable="d"
         Title="Jegyzettömb" Height="450" Width="800">
     <Window.DataContext>
         <vm:MainViewModel />
     </Window.DataContext>
-    <DockPanel>
+    <DockPanel LastChildFill="True">
         <Menu Height="30" VerticalAlignment="Top" DockPanel.Dock="Top">
             <MenuItem Command="{Binding NewCommand}">
                 <MenuItem.Header>
@@ -29,6 +30,11 @@
                 </MenuItem.Header>
             </MenuItem>
         </Menu>
+        <StatusBar DockPanel.Dock="Bottom" Height="20">
+            <StatusBarItem>
+                <TextBlock Text="{Binding Source={x:Static s:CurrentUser.UserName}}"/>
+            </StatusBarItem>
+        </StatusBar>
         <ListView x:Name="listBox" ItemsSource="{Binding Feladatok}"
                  ItemTemplate="{DynamicResource ListaDTmpl}"
                  ItemsPanel="{DynamicResource ListaItemsTmpl}"

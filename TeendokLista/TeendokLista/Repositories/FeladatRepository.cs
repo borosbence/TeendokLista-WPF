@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TeendokLista.Models;
+using TeendokLista.Services;
 
 namespace TeendokLista.Repositories
 {
@@ -18,7 +19,7 @@ namespace TeendokLista.Repositories
         
         public List<Feladat> GetAll()
         {
-            return db.Feladatok.OrderByDescending(x => x.Hatarido).ToList();
+            return db.Feladatok.Where(x => x.FelhasznaloId == CurrentUser.Id).OrderByDescending(x => x.Hatarido).ToList();
         }
 
         public Feladat GetById(int id)
@@ -38,8 +39,6 @@ namespace TeendokLista.Repositories
 
         public void Save(Feladat feladat)
         {
-            // TODO: A jelenlegi felhasználó id-jának lekérdezése
-
             // Megkeressük a db-ben
             var letezik = db.Feladatok.AsNoTracking().Any(x => x.Id == feladat.Id);
 

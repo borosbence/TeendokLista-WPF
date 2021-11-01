@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TeendokLista.Services;
 
 namespace TeendokLista.Models
 {
@@ -14,7 +15,7 @@ namespace TeendokLista.Models
             Szoveg = "Jegyzet...";
             Hatarido = DateTime.Now;
             Teljesitve = false;
-            FelhasznaloId = 1;
+            FelhasznaloId = CurrentUser.Id;
         }
     }
 }

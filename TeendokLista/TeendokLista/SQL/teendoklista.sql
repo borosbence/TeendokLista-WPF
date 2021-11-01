@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2021. Okt 31. 11:11
+-- Létrehozás ideje: 2021. Nov 01. 11:14
 -- Kiszolgáló verziója: 10.4.21-MariaDB
 -- PHP verzió: 7.4.23
 
@@ -42,8 +42,10 @@ CREATE TABLE `feladatok` (
 -- A tábla adatainak kiíratása `feladatok`
 --
 
-INSERT INTO `feladatok` (`Id`, `Cim`, `Szoveg`, `LetrehozasDatum`, `Teljesitve`, `FelhasznaloId`) VALUES
-(1, 'Első feladat', 'Adatbázis tervezése', '2021-10-08 14:33:26.000000', 0, 1);
+INSERT INTO `feladatok` (`Id`, `Cim`, `Szoveg`, `Hatarido`, `Teljesitve`, `FelhasznaloId`) VALUES
+(1, 'Első feladat', 'Tervezés', '2021-10-08 00:00:00.000000', 0, 1),
+(2, 'Második feladat', 'Megvalósítás', '2021-10-31 00:00:00.000000', 1, 1),
+(3, 'Próba', 'Teszt', '2021-11-01 10:56:44.854327', 0, 2);
 
 -- --------------------------------------------------------
 
@@ -62,7 +64,8 @@ CREATE TABLE `felhasznalok` (
 --
 
 INSERT INTO `felhasznalok` (`Id`, `Felhasznalonev`, `Jelszo`) VALUES
-(1, 'admin', 'admin');
+(1, 'admin', '$2a$11$JGsKig5QYjhqiN/oxH.MP.aTIq3Hklv1gjOUJ/PDz.QRPd06lqqfm'),
+(2, 'user', '$2a$11$qdlO060ZqGVD75J0kD2IY.fwBUXT.9o47HofNaoWuTic2t0il8XMq');
 
 --
 -- Indexek a kiírt táblákhoz
@@ -90,13 +93,13 @@ ALTER TABLE `felhasznalok`
 -- AUTO_INCREMENT a táblához `feladatok`
 --
 ALTER TABLE `feladatok`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT a táblához `felhasznalok`
 --
 ALTER TABLE `felhasznalok`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Megkötések a kiírt táblákhoz

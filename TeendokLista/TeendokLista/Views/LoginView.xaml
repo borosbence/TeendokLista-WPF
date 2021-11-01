@@ -32,12 +32,16 @@
             PasswordChar="*" PasswordChanged="PasswordBox_PasswordChanged"  
             Height="23" Width="250"
             Margin="150,100,0,0"
-            HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            HorizontalAlignment="Left" VerticalAlignment="Top">
+            <PasswordBox.InputBindings>
+                <KeyBinding Key="Return" Command="{Binding LoginCommand}" />
+            </PasswordBox.InputBindings>
+        </PasswordBox>
         <TextBlock Text="{Binding ErrorMessage}"
             Height="23" Width="250" 
             Margin="150,150,0,0" 
             HorizontalAlignment="Left" 
-            Foreground="Red"  />
+            Foreground="Red" />
         <Button Content="Bejelentkezés" Command="{Binding LoginCommand}"
                 Height="23" Width="100"
                 Margin="150,200,0,0"

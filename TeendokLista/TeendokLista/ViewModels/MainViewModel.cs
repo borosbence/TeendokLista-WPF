@@ -7,13 +7,14 @@ using System.Text;
 using System.Threading.Tasks;
 using TeendokLista.Models;
 using TeendokLista.Repositories;
+using TeendokLista.Services;
 using TeendokLista.Views;
 
 namespace TeendokLista.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
-        private FeladatRepository _repo;
+        private FeladatRepository repo;
         private ObservableCollection<Feladat> _feladatok;
         public ObservableCollection<Feladat> Feladatok
         {
@@ -33,8 +34,8 @@ namespace TeendokLista.ViewModels
 
         public MainViewModel()
         {
-            _repo = new FeladatRepository();
-            Feladatok = new ObservableCollection<Feladat>(_repo.GetAll());
+            repo = new FeladatRepository();
+            Feladatok = new ObservableCollection<Feladat>(repo.GetAll());
             SelectCommand = new RelayCommand(e => ShowDetail(e));
             NewCommand = new RelayCommand(e => AddItem());
             RemoveCommand = new RelayCommand(e => RemoveItem(e));
@@ -42,7 +43,7 @@ namespace TeendokLista.ViewModels
 
         public void ShowDetail(object parameter)
         {
-            DetailViewModel detailViewModel = new DetailViewModel(parameter as Feladat, _repo);
+            DetailViewModel detailViewModel = new DetailViewModel(parameter as Feladat, repo);
             DetailView detail = new DetailView(detailViewModel);
             // Itt már érzékeli az ObservableCollection a változást
             detail.ShowDialog();
@@ -51,7 +52,7 @@ namespace TeendokLista.ViewModels
         public void RemoveItem(object parameter)
         {
             // TODO: több elem kijelölésénél is
-            _repo.Delete(SelectedFeladat.Id);
+            repo.Delete(SelectedFeladat.Id);
             Feladatok.Remove(SelectedFeladat);
         }
 
