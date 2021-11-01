@@ -11,13 +11,6 @@
     <Window.DataContext>
         <vm:DetailViewModel/>
     </Window.DataContext>
-    <Window.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/Templates/JegyzetTemplate.xaml" />
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </Window.Resources>
     <!--<ContentPresenter Content="{Binding}" />-->
     <StackPanel Margin="5">
         <StackPanel Orientation="Horizontal">

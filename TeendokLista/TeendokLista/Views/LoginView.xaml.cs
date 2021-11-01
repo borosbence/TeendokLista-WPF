@@ -16,17 +16,21 @@ using TeendokLista.ViewModels;
 namespace TeendokLista.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for LoginView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class LoginView : Window
     {
-        public MainWindow(MainViewModel mainViewModel)
+        private LoginViewModel loginViewModel;
+        public LoginView()
         {
             InitializeComponent();
-            DataContext = mainViewModel;
-            //DirectoryInfo dir = new DirectoryInfo(@"D:\Képek\Hacker");
-            //FileInfo[] files = dir.GetFiles();
-            //listBox.ItemsSource = files;
+            this.loginViewModel = new LoginViewModel();
+            this.DataContext = loginViewModel;
+        }
+
+        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            loginViewModel.Password = pwdBox.Password;
         }
     }
 }

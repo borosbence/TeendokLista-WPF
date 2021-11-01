@@ -18,7 +18,12 @@ namespace TeendokLista.ViewModels
             remove { CommandManager.RequerySuggested -= value; }
         }
 
-        public RelayCommand(Action<object> execute, Func<object, bool> canExecute = null)
+        public RelayCommand(Action<object> execute)
+        {
+            this.execute = execute;
+        }
+
+        public RelayCommand(Action<object> execute, Func<object, bool> canExecute) : this(execute)
         {
             this.execute = execute;
             this.canExecute = canExecute;

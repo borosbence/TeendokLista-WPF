@@ -13,10 +13,7 @@ namespace TeendokLista.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
-        public RelayCommand SelectCommand { get; set; }
-        public RelayCommand NewCommand { get; set; }
-        public RelayCommand RemoveCommand { get; set; }
-
+        private FeladatRepository _repo;
         private ObservableCollection<Feladat> _feladatok;
         public ObservableCollection<Feladat> Feladatok
         {
@@ -30,19 +27,13 @@ namespace TeendokLista.ViewModels
             get { return _selectedFeladat; }
             set { SetProperty(ref _selectedFeladat, value); }
         }
+        public RelayCommand SelectCommand { get; set; }
+        public RelayCommand NewCommand { get; set; }
+        public RelayCommand RemoveCommand { get; set; }
 
-        private FeladatRepository _repo;
-
-        /// <summary>
-        /// Design nézethez
-        /// </summary>
         public MainViewModel()
         {
-
-        }
-        public MainViewModel(FeladatRepository feladatRepository)
-        {
-            _repo = feladatRepository;
+            _repo = new FeladatRepository();
             Feladatok = new ObservableCollection<Feladat>(_repo.GetAll());
             SelectCommand = new RelayCommand(e => ShowDetail(e));
             NewCommand = new RelayCommand(e => AddItem());

@@ -1,10 +1,10 @@
-﻿using CryptoHelper;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using TeendokLista.Models;
 
 namespace TeendokLista.Repositories
@@ -12,36 +12,37 @@ namespace TeendokLista.Repositories
     public class FelhasznaloRepository
     {
         private TeendokContext db;
-        public FelhasznaloRepository(TeendokContext teendokContext)
+        public FelhasznaloRepository()
         {
-            db = teendokContext;
+            db = new TeendokContext();
         }
 
-        public bool Authenticate(string username, string password)
+        public string Authenticate(string username, string password)
         {
+            // TODO: kötelező mezők validátorral
             // Ezzel a felhasználónévvel létezik e rekord
             var dbUser = db.Felhasznalok.AsNoTracking().SingleOrDefault(x => x.Felhasznalonev.Equals(username));
-            if (dbUser != null)
+            if (dbUser != null && !string.IsNullOrWhiteSpace(username) && !string.IsNullOrWhiteSpace(password))
             {
-                // Begépelt jelszó titkosítása
-                var passwordHash = BCrypt.Net.BCrypt.HashPassword(password);
+                // Begépelt jelszó titkosítása, ezt el kell menteni az adatbázisba!
+                // var passwordHash = BCrypt.Net.BCrypt.HashPassword(password);
                 // Jelszó ellenőrzése
                 bool verified = BCrypt.Net.BCrypt.Verify(password, dbUser.Jelszo);
                 if (verified)
                 {
-                    return true;
                     // CurrentUser.Id = user.id;
+                    return Application.Current.Resources["loginSuccess"].ToString();
                 }
                 else
                 {
                     // Hibás login
-                    return false;
+                    return Application.Current.Resources["loginFail"].ToString();
                 }
             }
             else
             {
                 // Felhasználó nem létezik
-                return false;
+                return Application.Current.Resources["loginNoUser"].ToString();
             }
         }
     }

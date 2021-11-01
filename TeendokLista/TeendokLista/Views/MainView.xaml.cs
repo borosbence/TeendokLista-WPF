@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,19 +12,22 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TeendokLista.Repositories;
 using TeendokLista.ViewModels;
 
 namespace TeendokLista.Views
 {
     /// <summary>
-    /// Interaction logic for DetailView.xaml
+    /// Interaction logic for MainView.xaml
     /// </summary>
-    public partial class DetailView : Window
+    public partial class MainView : Window
     {
-        public DetailView(DetailViewModel detailViewModel)
+        public MainView()
         {
             InitializeComponent();
-            DataContext = detailViewModel;
+            //DirectoryInfo dir = new DirectoryInfo(@"D:\Képek\Hacker");
+            //FileInfo[] files = dir.GetFiles();
+            //listBox.ItemsSource = files;
         }
     }
 }

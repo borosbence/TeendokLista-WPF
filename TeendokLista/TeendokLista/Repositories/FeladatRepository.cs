@@ -10,12 +10,12 @@ namespace TeendokLista.Repositories
 {
     public class FeladatRepository
     {
-        public FeladatRepository(TeendokContext teendokContext)
-        {
-            db = teendokContext;
-        }
         private TeendokContext db;
-
+        public FeladatRepository()
+        {
+            db = new TeendokContext();
+        }
+        
         public List<Feladat> GetAll()
         {
             return db.Feladatok.OrderByDescending(x => x.Hatarido).ToList();
@@ -25,13 +25,6 @@ namespace TeendokLista.Repositories
         {
             return db.Feladatok.Find(id);
         }
-
-        //public void Create(Feladat feladat)
-        //{
-        //    // TODO: dátum beállítása
-        //    db.Feladatok.Add(feladat);
-        //    db.SaveChanges();
-        //}
 
         public void Delete(int id)
         {

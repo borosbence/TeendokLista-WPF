@@ -24,7 +24,9 @@ namespace TeendokLista.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseMySql("server=localhost;user id=root;database=teendoklista", ServerVersion.Parse("10.4.21-mariadb"));
+                optionsBuilder.UseMySql("server=localhost;user id=root;database=teendoklista", ServerVersion.Parse("10.4.21-mariadb"))
+                    .EnableSensitiveDataLogging()
+                    .EnableDetailedErrors();
             }
         }
 
