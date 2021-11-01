@@ -20,6 +20,10 @@ namespace TeendokLista.Repositories
 
         public string Authenticate(string username, string password)
         {
+            if (!db.Database.CanConnect())
+            {
+                return Application.Current.Resources["dbFail"].ToString();
+            }
             // TODO: kötelező mezők validátorral
             // Ezzel a felhasználónévvel létezik e rekord
             var dbUser = db.Felhasznalok.AsNoTracking().SingleOrDefault(x => x.Felhasznalonev.Equals(username));
