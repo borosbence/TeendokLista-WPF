@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -24,7 +25,8 @@ namespace TeendokLista.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseMySql("server=localhost;user id=root;database=teendoklista", ServerVersion.Parse("10.4.21-mariadb"))
+                var connectionString = ConfigurationManager.ConnectionStrings["TeendokDB"].ConnectionString;
+                optionsBuilder.UseMySql(connectionString, ServerVersion.Parse("10.4.21-mariadb"))
                     .EnableSensitiveDataLogging()
                     .EnableDetailedErrors();
             }
