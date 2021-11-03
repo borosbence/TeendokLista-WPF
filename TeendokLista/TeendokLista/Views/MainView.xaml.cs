@@ -29,5 +29,12 @@ namespace TeendokLista.Views
             //FileInfo[] files = dir.GetFiles();
             //listBox.ItemsSource = files;
         }
+
+        private void Logout_Click(object sender, RoutedEventArgs e)
+        {
+            var loginView = new LoginView();
+            loginView.Show();
+            this.Close();
+        }
     }
 }

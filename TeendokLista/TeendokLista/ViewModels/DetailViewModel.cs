@@ -25,8 +25,6 @@ namespace TeendokLista.ViewModels
             SaveCommand = new RelayCommand(e => Save());
         }
 
-        public RelayCommand SaveCommand { get; set; }
-        public RelayCommand CancelCommand { get; set; }
         private FeladatRepository _repo;
 
         private Feladat _feladat;
@@ -35,6 +33,9 @@ namespace TeendokLista.ViewModels
             get { return _feladat; }
             set { SetProperty(ref _feladat, value); }
         }
+
+        public RelayCommand SaveCommand { get; set; }
+        public RelayCommand CancelCommand { get; set; }
 
         public void Save()
         {

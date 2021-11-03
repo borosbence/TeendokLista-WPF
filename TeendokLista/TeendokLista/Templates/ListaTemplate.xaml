@@ -41,16 +41,11 @@
             <!-- Kép fájlokhoz
             <StackPanel Orientation="Vertical" Cursor="Hand">
                 <Image Height="148" Width="148" Margin="10" Source="{Binding FullName}">
-                    <Image.InputBindings>
-                        <MouseBinding Gesture="LeftDoubleClick" 
-                                      Command="{Binding DataContext.New, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}}"
-                                      CommandParameter="{Binding FullName}"/>
-                    </Image.InputBindings>
                     <Image.Effect>
                         <DropShadowEffect BlurRadius="5" ShadowDepth="6" Opacity="0.75" />
                     </Image.Effect>
                 </Image>
-                <TextBlock Text="{Binding FullName}" />
+                <TextBlock Text="{Binding Name}" />
             </StackPanel>
             -->
         </Grid>

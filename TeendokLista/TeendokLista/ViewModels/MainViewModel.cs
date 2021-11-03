@@ -7,35 +7,36 @@ using System.Text;
 using System.Threading.Tasks;
 using TeendokLista.Models;
 using TeendokLista.Repositories;
-using TeendokLista.Services;
 using TeendokLista.Views;
 
 namespace TeendokLista.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
-        private FeladatRepository repo;
+        private FeladatRepository _repo;
+
         private ObservableCollection<Feladat> _feladatok;
         public ObservableCollection<Feladat> Feladatok
         {
             get { return _feladatok; }
             set { SetProperty(ref _feladatok, value); }
         }
-        private Feladat _selectedFeladat;
 
+        private Feladat _selectedFeladat;
         public Feladat SelectedFeladat
         {
             get { return _selectedFeladat; }
             set { SetProperty(ref _selectedFeladat, value); }
         }
+
         public RelayCommand SelectCommand { get; set; }
         public RelayCommand NewCommand { get; set; }
         public RelayCommand RemoveCommand { get; set; }
 
         public MainViewModel()
         {
-            repo = new FeladatRepository();
-            Feladatok = new ObservableCollection<Feladat>(repo.GetAll());
+            _repo = new FeladatRepository();
+            Feladatok = new ObservableCollection<Feladat>(_repo.GetAll());
             SelectCommand = new RelayCommand(e => ShowDetail(e));
             NewCommand = new RelayCommand(e => AddItem());
             RemoveCommand = new RelayCommand(e => RemoveItem(e));
@@ -43,7 +44,7 @@ namespace TeendokLista.ViewModels
 
         public void ShowDetail(object parameter)
         {
-            DetailViewModel detailViewModel = new DetailViewModel(parameter as Feladat, repo);
+            DetailViewModel detailViewModel = new DetailViewModel(parameter as Feladat, _repo);
             DetailView detail = new DetailView(detailViewModel);
             // Itt már érzékeli az ObservableCollection a változást
             detail.ShowDialog();
@@ -52,7 +53,7 @@ namespace TeendokLista.ViewModels
         public void RemoveItem(object parameter)
         {
             // TODO: több elem kijelölésénél is
-            repo.Delete(SelectedFeladat.Id);
+            _repo.Delete(SelectedFeladat.Id);
             Feladatok.Remove(SelectedFeladat);
         }
 
@@ -60,7 +61,6 @@ namespace TeendokLista.ViewModels
         {
             var newItem = new Feladat();
             Feladatok.Insert(0, newItem);
-            ShowDetail(newItem);
         }
     }
 }

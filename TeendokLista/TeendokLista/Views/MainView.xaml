@@ -13,6 +13,11 @@
     </Window.DataContext>
     <DockPanel LastChildFill="True">
         <Menu Height="30" VerticalAlignment="Top" DockPanel.Dock="Top">
+            <Menu.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <DockPanel HorizontalAlignment="Stretch"></DockPanel>
+                </ItemsPanelTemplate>
+            </Menu.ItemsPanel>
             <MenuItem Command="{Binding NewCommand}">
                 <MenuItem.Header>
                     <StackPanel Orientation="Horizontal">
@@ -26,6 +31,14 @@
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/img/Trash_16x.png" Height="16"/>
                         <Label>Törlés</Label>
+                    </StackPanel>
+                </MenuItem.Header>
+            </MenuItem>
+            <MenuItem HorizontalAlignment="Right" Click="Logout_Click">
+                <MenuItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/img/Exit_16x.png" Height="16" />
+                        <Label>Kijelentkezés</Label>
                     </StackPanel>
                 </MenuItem.Header>
             </MenuItem>
