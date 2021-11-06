@@ -12,12 +12,8 @@
         <vm:MainViewModel />
     </Window.DataContext>
     <DockPanel LastChildFill="True">
-        <Menu Height="30" VerticalAlignment="Top" DockPanel.Dock="Top">
-            <Menu.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <DockPanel HorizontalAlignment="Stretch"></DockPanel>
-                </ItemsPanelTemplate>
-            </Menu.ItemsPanel>
+        <Menu Height="30" VerticalAlignment="Top" DockPanel.Dock="Top" 
+              ItemsPanel="{DynamicResource MenuItemsTmpl}">
             <MenuItem Command="{Binding NewCommand}">
                 <MenuItem.Header>
                     <StackPanel Orientation="Horizontal">
@@ -26,7 +22,7 @@
                     </StackPanel>
                 </MenuItem.Header>
             </MenuItem>
-            <MenuItem Command="{Binding RemoveCommand}" CommandParameter="{Binding ElementName=listBox}">
+            <MenuItem Command="{Binding RemoveCommand}">
                 <MenuItem.Header>
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/img/Trash_16x.png" Height="16"/>

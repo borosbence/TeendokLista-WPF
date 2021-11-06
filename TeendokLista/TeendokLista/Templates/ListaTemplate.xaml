@@ -37,8 +37,9 @@
                 <TextBlock Text="{Binding Szoveg}" TextWrapping="Wrap" Margin="0,5,0,0"
                            FontStyle="Italic" />
             </StackPanel>
+        </Grid>
 
-            <!-- Kép fájlokhoz
+        <!-- Kép fájlokhoz
             <StackPanel Orientation="Vertical" Cursor="Hand">
                 <Image Height="148" Width="148" Margin="10" Source="{Binding FullName}">
                     <Image.Effect>
@@ -48,10 +49,12 @@
                 <TextBlock Text="{Binding Name}" />
             </StackPanel>
             -->
-        </Grid>
     </DataTemplate>
     <ItemsPanelTemplate x:Key="ListaItemsTmpl">
         <WrapPanel>
         </WrapPanel>
+    </ItemsPanelTemplate>
+    <ItemsPanelTemplate x:Key="MenuItemsTmpl">
+        <DockPanel HorizontalAlignment="Stretch"></DockPanel>
     </ItemsPanelTemplate>
 </ResourceDictionary>

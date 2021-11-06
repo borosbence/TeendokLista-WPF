@@ -39,7 +39,7 @@ namespace TeendokLista.ViewModels
             Feladatok = new ObservableCollection<Feladat>(_repo.GetAll());
             SelectCommand = new RelayCommand(e => ShowDetail(e));
             NewCommand = new RelayCommand(e => AddItem());
-            RemoveCommand = new RelayCommand(e => RemoveItem(e));
+            RemoveCommand = new RelayCommand(e => RemoveItem());
         }
 
         public void ShowDetail(object parameter)
@@ -50,7 +50,7 @@ namespace TeendokLista.ViewModels
             detail.ShowDialog();
         }
 
-        public void RemoveItem(object parameter)
+        public void RemoveItem()
         {
             // TODO: több elem kijelölésénél is
             _repo.Delete(SelectedFeladat.Id);
