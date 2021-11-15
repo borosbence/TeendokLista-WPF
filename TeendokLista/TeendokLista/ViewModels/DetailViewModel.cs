@@ -35,7 +35,6 @@ namespace TeendokLista.ViewModels
         }
 
         public RelayCommand SaveCommand { get; set; }
-        public RelayCommand CancelCommand { get; set; }
 
         private void Save()
         {
