@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using TeendokLista.Models;
 using TeendokLista.Repositories;
 using TeendokLista.Views;
@@ -15,12 +16,7 @@ namespace TeendokLista.ViewModels
     {
         private FeladatRepository _repo;
 
-        private ObservableCollection<Feladat> _feladatok;
-        public ObservableCollection<Feladat> Feladatok
-        {
-            get { return _feladatok; }
-            set { SetProperty(ref _feladatok, value); }
-        }
+        public ObservableCollection<Feladat> Feladatok { get; set; }
 
         private Feladat _selectedFeladat;
         public Feladat SelectedFeladat
@@ -32,35 +28,45 @@ namespace TeendokLista.ViewModels
         public RelayCommand SelectCommand { get; set; }
         public RelayCommand NewCommand { get; set; }
         public RelayCommand RemoveCommand { get; set; }
+        public RelayCommand LogoutCommand { get; set; }
 
         public MainViewModel()
         {
             _repo = new FeladatRepository();
             Feladatok = new ObservableCollection<Feladat>(_repo.GetAll());
-            SelectCommand = new RelayCommand(e => ShowDetail(e));
+            SelectCommand = new RelayCommand(feladat => ShowDetail((Feladat)feladat));
             NewCommand = new RelayCommand(e => AddItem());
             RemoveCommand = new RelayCommand(e => RemoveItem());
+            LogoutCommand = new RelayCommand(e => Close((Window)e));
+
         }
 
-        public void ShowDetail(object parameter)
+        private void ShowDetail(Feladat feladat)
         {
-            DetailViewModel detailViewModel = new DetailViewModel(parameter as Feladat, _repo);
+            DetailViewModel detailViewModel = new DetailViewModel(feladat, _repo);
             DetailView detail = new DetailView(detailViewModel);
             // Itt már érzékeli az ObservableCollection a változást
             detail.ShowDialog();
         }
 
-        public void RemoveItem()
+        private void AddItem()
+        {
+            var newItem = new Feladat();
+            Feladatok.Insert(0, newItem);
+        }
+
+        private void RemoveItem()
         {
             // TODO: több elem kijelölésénél is
             _repo.Delete(SelectedFeladat.Id);
             Feladatok.Remove(SelectedFeladat);
         }
 
-        public void AddItem()
+        private void Close(Window window)
         {
-            var newItem = new Feladat();
-            Feladatok.Insert(0, newItem);
+            var loginView = new LoginView();
+            loginView.Show();
+            window.Close();
         }
     }
 }

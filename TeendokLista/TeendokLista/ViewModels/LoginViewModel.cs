@@ -36,14 +36,14 @@ namespace TeendokLista.ViewModels
         public LoginViewModel()
         {
             repo = new FelhasznaloRepository();
-            LoginCommand = new RelayCommand(e => Login());
+            LoginCommand = new RelayCommand(e => Login(), e => CanLogin());
         }
 
-        public bool CanLogin()
+        private bool CanLogin()
         {
-            return !string.IsNullOrWhiteSpace(_username);
+            return !string.IsNullOrWhiteSpace(_username) && !string.IsNullOrWhiteSpace(_password);
         }
-        public void Login()
+        private void Login()
         {
             ErrorMessage = repo.Authenticate(_username, _password);
             if (ErrorMessage == Application.Current.Resources["loginSuccess"].ToString())

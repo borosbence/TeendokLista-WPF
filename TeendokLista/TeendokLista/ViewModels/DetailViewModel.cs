@@ -37,7 +37,7 @@ namespace TeendokLista.ViewModels
         public RelayCommand SaveCommand { get; set; }
         public RelayCommand CancelCommand { get; set; }
 
-        public void Save()
+        private void Save()
         {
             _repo.Save(_feladat);
         }

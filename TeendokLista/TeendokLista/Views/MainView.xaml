@@ -30,7 +30,9 @@
                     </StackPanel>
                 </MenuItem.Header>
             </MenuItem>
-            <MenuItem HorizontalAlignment="Right" Click="Logout_Click">
+            <MenuItem HorizontalAlignment="Right"  
+                      Command="{Binding LogoutCommand}" 
+                      CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" >
                 <MenuItem.Header>
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/img/Exit_16x.png" Height="16" />
