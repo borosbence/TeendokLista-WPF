@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
+using Microsoft.Toolkit.Mvvm.Input;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -12,7 +14,7 @@ using TeendokLista.Views;
 
 namespace TeendokLista.ViewModels
 {
-    public class MainViewModel : ViewModelBase
+    public class MainViewModel : ObservableObject
     {
         private FeladatRepository _repo;
 
@@ -25,19 +27,19 @@ namespace TeendokLista.ViewModels
             set { SetProperty(ref _selectedFeladat, value); }
         }
 
-        public RelayCommand SelectCommand { get; set; }
+        public RelayCommand<Feladat> SelectCommand { get; set; }
         public RelayCommand NewCommand { get; set; }
         public RelayCommand RemoveCommand { get; set; }
-        public RelayCommand LogoutCommand { get; set; }
+        public RelayCommand<Window> LogoutCommand { get; set; }
 
         public MainViewModel()
         {
             _repo = new FeladatRepository();
             Feladatok = new ObservableCollection<Feladat>(_repo.GetAll());
-            SelectCommand = new RelayCommand(feladat => ShowDetail((Feladat)feladat));
-            NewCommand = new RelayCommand(e => AddItem());
-            RemoveCommand = new RelayCommand(e => RemoveItem());
-            LogoutCommand = new RelayCommand(e => Close((Window)e));
+            SelectCommand = new RelayCommand<Feladat>(feladat => ShowDetail(feladat));
+            NewCommand = new RelayCommand(() => AddItem());
+            RemoveCommand = new RelayCommand(() => RemoveItem());
+            LogoutCommand = new RelayCommand<Window>(e => Close(e));
 
         }
 

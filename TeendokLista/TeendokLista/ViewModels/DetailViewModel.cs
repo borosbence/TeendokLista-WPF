@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
+using Microsoft.Toolkit.Mvvm.Input;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +11,7 @@ using TeendokLista.Repositories;
 
 namespace TeendokLista.ViewModels
 {
-    public class DetailViewModel : ViewModelBase
+    public class DetailViewModel : ObservableObject
     {
         /// <summary>
         /// Design nézethez
@@ -22,7 +24,7 @@ namespace TeendokLista.ViewModels
         {
             _feladat = feladat;
             _repo = feladatRepository;
-            SaveCommand = new RelayCommand(e => Save());
+            SaveCommand = new RelayCommand(() => Save());
         }
 
         private FeladatRepository _repo;

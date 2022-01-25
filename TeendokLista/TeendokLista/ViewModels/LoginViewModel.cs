@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
+using Microsoft.Toolkit.Mvvm.Input;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,19 +12,19 @@ using TeendokLista.Views;
 
 namespace TeendokLista.ViewModels
 {
-    public class LoginViewModel : ViewModelBase
+    public class LoginViewModel : ObservableObject
     {
         private string _username;
         public string Username
         {
             get { return _username; }
-            set { SetProperty(ref _username, value); }
+            set { SetProperty(ref _username, value); LoginCommand.NotifyCanExecuteChanged(); }
         }
         private string _password;
         public string Password
         {
             get { return _password; }
-            set { SetProperty(ref _password, value); }
+            set { SetProperty(ref _password, value); LoginCommand.NotifyCanExecuteChanged(); }
         }
         private string _errorMessage;
         public string ErrorMessage
@@ -36,7 +38,7 @@ namespace TeendokLista.ViewModels
         public LoginViewModel()
         {
             repo = new FelhasznaloRepository();
-            LoginCommand = new RelayCommand(e => Login(), e => CanLogin());
+            LoginCommand = new RelayCommand(() => Login(), () => CanLogin());
         }
 
         private bool CanLogin()
